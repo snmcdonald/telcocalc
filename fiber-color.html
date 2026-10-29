@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!-- Copyright (c) 2026 Shane McDonald. All rights reserved. -->
+<!-- Version 1.1 -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fiber Optic Color Code Calculator</title>
+  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="fiber-color.css">
+</head>
+<body>
+
+  <!-- Injected Header -->
+  <div id="site-header" style="width: 100%; display: flex; justify-content: center;"></div>
+
+  <div class="calculator-card">
+    <h1>Fiber Optic Color Code Calculator</h1>
+    <p class="subtitle">ANSI-TIA-598 Fiber Optic Color Codes</p>
+
+    <!-- NUMBER TO COLOR SECTION -->
+    <div class="section" id="number_to_color">
+      <div class="section-title">Number to Color</div>
+      
+      <div class="form-group">
+        <label for="strands_per_tube">Strands Per Tube</label>
+        <select id="strands_per_tube">
+          <option value="6">6</option>
+          <option value="12" selected>12</option>
+          <option value="24">24</option>
+          <option value="36">36</option>
+          <option value="48">48</option>
+          <option value="60">60</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="strand_number">Strand Number</label>
+        <input type="number" id="strand_number" value="1" min="1" max="144" step="1">
+        <div class="error-msg" id="strand_error">Enter integer between 1 and 144</div>
+      </div>
+    </div>
+
+    <!-- COLOR TO NUMBER SECTION -->
+    <div class="section" id="color_to_number">
+      <div class="section-title">Color to Number</div>
+
+      <div class="form-group">
+        <label for="tube_color">Tube Color</label>
+        <select id="tube_color" class="color-select"></select>
+      </div>
+
+      <div class="form-group">
+        <label for="tracer_color">Tracer Color</label>
+        <select id="tracer_color" class="color-select"></select>
+      </div>
+
+      <div class="form-group">
+        <label for="strand_color">Strand Color</label>
+        <select id="strand_color" class="color-select"></select>
+      </div>
+    </div>
+
+    <!-- VISUAL SUMMARY -->
+    <div class="visual-summary" id="visual_summary">
+      <div class="info-text">
+        Strand <span id="out_strand_num" class="info-highlight">1</span> 
+      </div>
+      <div class="fiber-graphic">
+        <div class="tube-preview" id="preview_tube">
+          <div class="strand-preview" id="preview_strand">
+            <div class="tracer-line" id="preview_tracer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="info-text" id="out_color_desc">
+        Tube: Blue | Strand: Blue | Tracer: None
+      </div>
+    </div>
+  </div>
+
+  <div class="standards-footer">
+    <strong>Standards Reference:</strong> Incorporates color coding specifications derived from <strong>ANSI/TIA-598</strong> (Optical Fiber Cable Color Coding) standards, utilized under fair use for functional reference and technical interoperability.
+  </div>
+
+  <!-- Injected Footer -->
+  <div id="site-footer" style="width: 100%; display: flex; justify-content: center;"></div>
+
+  <script src="global.js"></script>
+  <script type="module" src="fiber-color.js"></script>
+</body>
+</html>

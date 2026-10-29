@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!-- Copyright (c) 2026 Shane McDonald. All rights reserved. -->
+<!-- Version 1.3 -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cable to EMT Calculator</title>
+  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="cable-fill.css">
+</head>
+<body>
+
+  <!-- Injected Header -->
+  <div id="site-header" style="width: 100%; display: flex; justify-content: center;"></div>
+
+  <div class="container">
+    <h1>Cable to EMT</h1>
+    <p class="subtitle">CEC Compliant EMT Fill Calculator</p>
+
+    <div class="grid-layout">
+      <div class="controls-column">
+        <div class="radio-group-container">
+          <div class="radio-group-title">What are we Calculating?</div>
+          <div class="radio-options" id="cable_selection">
+            <label class="radio-option">
+              <input type="radio" name="calc_mode" value="conduit_single" checked>
+              Minimum Conduit Size - Single Cable Type
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="calc_mode" value="conduit_mixed">
+              Minimum Conduit Size - Mixed Cable Types
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="calc_mode" value="cables">
+              Max Number of Cables
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="calc_mode" value="diameter">
+              Max Cable Diameter
+            </label>
+          </div>
+        </div>
+
+        <div id="single_inputs_wrapper">
+          <div class="form-group" id="group_cable_number">
+            <label for="cable_number">Number of Cables</label>
+            <input type="number" id="cable_number" min="1" max="200" value="3" step="1">
+            <div class="error-msg" id="err_cable_number">Must be a number between 1 and 200 (CEC Max).</div>
+          </div>
+
+          <div class="form-group" id="group_cable_diameter">
+            <label for="cable_diameter">Cable Diameter</label>
+            <div class="unit-input-group">
+              <input type="number" id="cable_diameter" min="0.01" step="0.01" value="10">
+              <select id="cable_unit">
+                <option value="mm">mm</option>
+                <option value="inch">inch</option>
+              </select>
+            </div>
+            <div class="error-msg" id="err_cable_diameter">Must be a number greater than 0.</div>
+          </div>
+        </div>
+
+        <div class="form-group hidden" id="group_mixed_cables">
+          <label>Mixed Cable Sizes & Quantities</label>
+          <div id="mixed_cables_container"></div>
+          <button type="button" class="btn-action" id="btnAddMixedRow">+ Add a cable with a new size</button>
+          <div class="error-msg" id="err_mixed">Total cables cannot exceed 200 (CEC Max). All sizes must be &gt; 0.</div>
+        </div>
+
+        <div class="form-group hidden" id="group_conduit_size">
+          <label for="conduit_size">EMT Conduit Trade Size</label>
+          <select id="conduit_size">
+            <option value="0">16 (1/2")</option>
+            <option value="1">21 (3/4")</option>
+            <option value="2">27 (1")</option>
+            <option value="3">35 (1-1/4")</option>
+            <option value="4">41 (1-1/2")</option>
+            <option value="5">53 (2")</option>
+            <option value="6">63 (2-1/2")</option>
+            <option value="7">78 (3")</option>
+            <option value="8">91 (3-1/2")</option>
+            <option value="9">103 (4")</option>
+            <option value="10">129 (5")</option>
+            <option value="11">155 (6")</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="results-column">
+        <div class="result-card">
+          <div class="result-title" id="result_label">Minimum Conduit Size</div>
+          <div class="result-value" id="result_output">--</div>
+          <div class="result-detail" id="result_detail">Fill out parameters to calculate.</div>
+          <div id="cec_warning_container"></div>
+
+          <div class="canvas-container">
+            <canvas id="crossSectionCanvas" width="220" height="220"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <details>
+      <summary>EMT Internal Fill Area Reference Table (mm²)</summary>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>EMT Trade Size</th>
+              <th>1 Cable (53%)</th>
+              <th>2 Cables (31%)</th>
+              <th>3+ Cables (40%)</th>
+            </tr>
+          </thead>
+          <tbody id="ref_table_body"></tbody>
+        </table>
+      </div>
+    </details>
+  </div>
+
+  <div class="standards-footer">
+    References Table 8, 9A, 9C, 9E, 9G of the Canadian Electrical Code 2024, utilized under fair use for functional reference and technical interoperability.
+  </div>
+
+  <!-- Injected Footer -->
+  <div id="site-footer" style="width: 100%; display: flex; justify-content: center;"></div>
+
+  <script src="global.js"></script>
+  <script type="module" src="cable-fill.js"></script>
+</body>
+</html>

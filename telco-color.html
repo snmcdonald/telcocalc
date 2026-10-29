@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!-- Copyright (c) 2026 Shane McDonald. All rights reserved. -->
+<!-- Version 1.3 -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telco Color Code Calculator</title>
+  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="telco-color.css">
+</head>
+<body>
+
+  <!-- Injected Header -->
+  <div id="site-header" style="width: 100%; display: flex; justify-content: center;"></div>
+
+  <div class="main-wrapper">
+    <header class="telco-header-banner">
+      <div class="header-title-area">
+        <h1>Telco Color Code Calculator</h1>
+        <p>High-Count 25-Pair, Binder & Super Binder Standard Calculator</p>
+      </div>
+      <div class="status-badge">
+        <span class="pulse-dot"></span>
+        <span>Pairs 1 - 6000 Active</span>
+      </div>
+    </header>
+
+    <div class="grid-layout">
+      <main class="card">
+        <div class="form-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <label for="pair_number">Telco Number</label>
+            <span style="font-size: 0.75rem; font-family: monospace; color: var(--text-muted);">Range: 1 to 6000</span>
+          </div>
+          <div class="input-wrapper">
+            <input 
+              type="number" 
+              id="pair_number" 
+              min="1" 
+              max="6000" 
+              value="1"
+              placeholder="Enter Pair Number (1 - 6000)..."
+            />
+            <div class="input-suffix">PAIR #</div>
+          </div>
+          <div id="validation_feedback" class="validation-msg">
+            <span id="validation_text"></span>
+          </div>
+        </div>
+
+        <hr />
+
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted);">Color Dropdowns</span>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0;">
+            <label for="super_binder_color">1. Super Binder</label>
+            <select id="super_binder_color">
+              <option value="0" class="opt-white">White</option>
+              <option value="1" class="opt-red">Red</option>
+              <option value="2" class="opt-black">Black</option>
+              <option value="3" class="opt-yellow">Yellow</option>
+              <option value="4" class="opt-violet">Violet</option>
+              <option value="5" class="opt-blue">Blue</option>
+              <option value="6" class="opt-orange">Orange</option>
+              <option value="7" class="opt-green">Green</option>
+              <option value="8" class="opt-brown">Brown</option>
+              <option value="9" class="opt-slate">Slate</option>
+            </select>
+          </div>
+
+          <div class="dropdown-grid">
+            <div class="form-group" style="margin-bottom: 0;">
+              <label for="binder_tip_color">2. Binder Tip</label>
+              <select id="binder_tip_color">
+                <option value="0" class="opt-white">White</option>
+                <option value="1" class="opt-red">Red</option>
+                <option value="2" class="opt-black">Black</option>
+                <option value="3" class="opt-yellow">Yellow</option>
+                <option value="4" class="opt-violet">Violet</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label for="binder_ring_color">3. Binder Ring</label>
+              <select id="binder_ring_color">
+                <option value="0" class="opt-blue">Blue</option>
+                <option value="1" class="opt-orange">Orange</option>
+                <option value="2" class="opt-green">Green</option>
+                <option value="3" class="opt-brown">Brown</option>
+                <option value="4" class="opt-slate">Slate</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="dropdown-grid">
+            <div class="form-group" style="margin-bottom: 0;">
+              <label for="wire_tip_color">4. Wire Tip</label>
+              <select id="wire_tip_color">
+                <option value="0" class="opt-white">White</option>
+                <option value="1" class="opt-red">Red</option>
+                <option value="2" class="opt-black">Black</option>
+                <option value="3" class="opt-yellow">Yellow</option>
+                <option value="4" class="opt-violet">Violet</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label for="wire_ring_color">5. Wire Ring</label>
+              <select id="wire_ring_color">
+                <option value="0" class="opt-blue">Blue</option>
+                <option value="1" class="opt-orange">Orange</option>
+                <option value="2" class="opt-green">Green</option>
+                <option value="3" class="opt-brown">Brown</option>
+                <option value="4" class="opt-slate">Slate</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <aside class="card" style="display: flex; flex-direction: column; justify-content: space-between; gap: 20px;">
+        <div>
+          <div class="card-title" style="margin-bottom: 16px;">Visual Summary</div>
+
+          <div id="visual_summary_content" class="summary-box">
+            <div class="summary-row">
+              <span>Telco Pair Number:</span>
+              <span id="summary_pair_number">Pair 1</span>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div class="summary-row" style="border: none; padding-bottom: 0;">
+                <span>Super Binder (600-Pair):</span>
+                <span id="summary_super_binder">White</span>
+              </div>
+              <div id="preview_super_binder" class="color-preview-bar" style="background-color: #ffffff;"></div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div class="summary-row" style="border: none; padding-bottom: 0;">
+                <span>Binder Ribbon (25-Pair):</span>
+                <span id="summary_binder">White / Blue</span>
+              </div>
+              <div class="color-preview-bar" style="display: flex;">
+                <div id="preview_binder_tip" style="width: 50%; height: 100%; background-color: #ffffff;"></div>
+                <div id="preview_binder_ring" style="width: 50%; height: 100%; background-color: #3b82f6;"></div>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div class="summary-row" style="border: none; padding-bottom: 0;">
+                <span>Wire Pair Conductors:</span>
+                <span id="summary_wire">White / Blue</span>
+              </div>
+
+              <div class="wire-simulation-box">
+                <div class="wire-row">
+                  <span class="wire-label">TIP:</span>
+                  <div class="wire-bar">
+                    <div id="render_wire_tip_bg" style="width: 100%; height: 100%; background-color: #ffffff; position: relative;">
+                      <div id="render_wire_tip_stripe" class="wire-stripe-overlay"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="wire-row">
+                  <span class="wire-label">RING:</span>
+                  <div class="wire-bar">
+                    <div id="render_wire_ring_bg" style="width: 100%; height: 100%; background-color: #3b82f6; position: relative;">
+                      <div id="render_wire_ring_stripe" class="wire-stripe-overlay"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <div class="info-box-title">Color Mapping Info</div>
+          <p>Calculations strictly map 25 pairs per binder group and 24 binder groups (600 pairs) per super binder.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div class="standards-footer">
+    <strong>Standards Reference:</strong> Incorporates telecommunications 25-pair color coding specifications and high-count binder group methodologies (ANSI/TIA and Bell System / AT&T standards), utilized under fair use for technical calculation and interoperability reference.
+  </div>
+
+  <!-- Injected Footer -->
+  <div id="site-footer" style="width: 100%; display: flex; justify-content: center;"></div>
+
+  <script src="global.js"></script>
+  <script type="module" src="telco-color.js"></script>
+</body>
+</html>

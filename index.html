@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!-- Copyright (c) 2026 Shane McDonald. All rights reserved. -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading...</title>
+
+  <!-- Global Stylesheet -->
+  <link rel="stylesheet" href="global.css">
+
+  <!-- Redirect after 1 second -->
+  <meta http-equiv="refresh" content="1;url=cable-fill.html">
+</head>
+<body>
+
+  <!-- Injected Header -->
+  <div id="site-header" style="width: 100%; display: flex; justify-content: center;"></div>
+
+  <!-- Main Loading Container -->
+  <main style="flex: 1; display: flex; align-items: center; justify-content: center; width: 100%;">
+    <p style="font-size: 1.25rem; font-weight: 600; color: var(--text-color, #f8fafc);">Loading...</p>
+  </main>
+
+  <!-- Injected Footer -->
+  <div id="site-footer" style="width: 100%; display: flex; justify-content: center;"></div>
+
+  <!-- Global Injection Script -->
+  <script src="global.js"></script>
+
+  <!-- JavaScript Fallback Redirect -->
+  <script type="module">
+    setTimeout(() => {
+      window.location.href = "cable-fill.html";
+    }, 1000);
+  </script>
+
+</body>
+</html>
