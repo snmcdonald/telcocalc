@@ -46,10 +46,10 @@ body {
   border-color: #334155; /* Subtle border outline */
 }
 
-/* Shared Navigation Bar Styles */
+/* --- Shared Navigation Bar Styles --- */
 .site-nav {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* Left logo, centered links, right logo */
   align-items: center;
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
@@ -87,6 +87,7 @@ body {
   display: flex;
   gap: 20px;
   align-items: center;
+  justify-content: center; /* Centers the links within the middle grid column */
 }
 
 .nav-links a {
