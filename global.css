@@ -27,6 +27,25 @@ body {
   padding: 20px;
 }
 
+.nav-links a {
+  color: #f8fafc;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 6px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+/* Clear hover state that makes them look like clickable buttons */
+.nav-links a:hover {
+  color: #38bdf8; /* Change text to cyan */
+  background-color: #0f172a; /* Darker background contrast */
+  border-color: #334155; /* Subtle border outline */
+}
+
 /* Shared Navigation Bar Styles */
 .site-nav {
   display: flex;
