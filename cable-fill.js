@@ -1,3 +1,5 @@
+// Copyright (c) 2026 Shane McDonald. All rights reserved.
+
 const CONDUIT_DATA = [
   { metric: 16,  trade: '1/2"',   area1: 98.72,   area2: 57.74,   area3: 74.51 },
   { metric: 21,  trade: '3/4"',   area1: 174.93,  area2: 102.32,  area3: 132.03 },
