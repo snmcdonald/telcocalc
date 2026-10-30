@@ -1,3 +1,5 @@
+// Copyright (c) 2026 Shane McDonald. All rights reserved.
+
 const TIP_COLORS = [
   { name: "White", bgClass: "bg-telco-white", hex: "#FFFFFF" },
   { name: "Red", bgClass: "bg-telco-red", hex: "#EF4444" },
