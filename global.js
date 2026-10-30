@@ -1,3 +1,5 @@
+// Copyright (c) 2026 Shane McDonald. All rights reserved.
+
 document.addEventListener("DOMContentLoaded", () => {
   // Inject Header
   fetch('header.html')
