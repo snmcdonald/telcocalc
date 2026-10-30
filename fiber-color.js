@@ -1,3 +1,5 @@
+// Copyright (c) 2026 Shane McDonald. All rights reserved.
+
 const STRAND_COLORS = [
   { name: "Blue", bg: "#0066ff", text: "#ffffff" },
   { name: "Orange", bg: "#ff6600", text: "#ffffff" },
